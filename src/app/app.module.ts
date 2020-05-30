@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {CookieService } from 'ngx-cookie-service';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,16 +21,16 @@ import { FaqComponent } from './pages/faq/faq.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { RouterModule } from '@angular/router';
 const appRoutes = [
-  {path: '', component: HomeComponent},
-  {path: 'jobs', component: JobsComponent},
-  {path: 'jobs/:{id}', component: JobDetailComponent},
-  {path: 'companies', component:CompaniesComponent},
-  {path: 'companies/:{id}', component:CompanyDetailComponent },
-  {path: 'create-job', component:CreateJobComponent},
-  {path: 'about-us', component:AboutUsComponent},
-  {path: 'faq', component:FaqComponent},
-  {path: 'pricing', component:PricingComponent},
-  {path: 'contact-us', component:ContactUsComponent}
+  { path: '', component: HomeComponent },
+  { path: 'jobs', component: JobsComponent },
+  { path: 'jobs/:{id}', component: JobDetailComponent },
+  { path: 'companies', component: CompaniesComponent },
+  { path: 'companies/:{id}', component: CompanyDetailComponent },
+  { path: 'create-job', component: CreateJobComponent },
+  { path: 'about-us', component: AboutUsComponent },
+  { path: 'faq', component: FaqComponent },
+  { path: 'pricing', component: PricingComponent },
+  { path: 'contact-us', component: ContactUsComponent }
 
 ]
 @NgModule({
@@ -51,8 +54,12 @@ const appRoutes = [
     AppRoutingModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
+    FormsModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    CookieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

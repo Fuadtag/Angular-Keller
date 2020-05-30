@@ -18,7 +18,7 @@ export class FaqComponent implements OnInit {
   getFaqs(){
      this.apiservice.getFaqs().subscribe(
        data => {
-         this.faq = Array.from(data);
+         this.faq = data;
          console.log(this.faq)
        },
        error => {

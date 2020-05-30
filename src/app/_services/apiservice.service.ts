@@ -11,6 +11,6 @@ export class ApiserviceService {
 
   }
   getFaqs(){
-    return this.httpService.get<Faq[]>("https://localhost:44346/api/pages/faq");
+    return this.httpService.get<Faq[]>("https://localhost:44346/api/pages/faqs");
   }
 }

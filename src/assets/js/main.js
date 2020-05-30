@@ -1,4 +1,4 @@
-(function ($) {
+(function($) {
     "use strict";
 
     /*--
@@ -13,7 +13,7 @@
         Custom script to call Background
         Image form html data attribute
     -----------------------------------*/
-    $('[data-bg-image]').each(function () {
+    $('[data-bg-image]').each(function() {
         var $this = $(this),
             $image = $this.data('bg-image');
         $this.css('background-image', 'url(' + $image + ')');
@@ -23,14 +23,14 @@
     /*--
         Parallax
     -----------------------------------*/
-    $('.bg-parallax').each(function () {
+    $('.bg-parallax').each(function() {
         $(this).parallax("50%", 0.5);
     })
 
     /*--
         Header Sticky
     -----------------------------------*/
-    $window.on('scroll', function () {
+    $window.on('scroll', function() {
         if ($window.scrollTop() > 350) {
             $('.header').addClass('is-sticky');
         } else {
@@ -44,12 +44,12 @@
     function mobileOffCanvasToggle() {
         var $offCanvas = $('#offcanvas'),
             $offCanvasOverlay = $('.offcanvas-overlay');
-        $('.offcanvas-toggle').on('click', function () {
+        $('.offcanvas-toggle').on('click', function() {
             $offCanvas.addClass('open');
             $offCanvasOverlay.fadeIn();
             $body.addClass('offcanvas-open');
         });
-        $('.offcanvas-close, .offcanvas-overlay').on('click', function () {
+        $('.offcanvas-close, .offcanvas-overlay').on('click', function() {
             $offCanvas.removeClass('open');
             $offCanvasOverlay.fadeOut();
             $body.removeClass('offcanvas-open');
@@ -68,7 +68,7 @@
         $offCanvasNavSubMenu.parent().prepend('<span class="menu-expand"><i></i></span>');
 
         /*Category Sub Menu Toggle*/
-        $offCanvasNav.on('click', 'li a, li .menu-expand', function (e) {
+        $offCanvasNav.on('click', 'li a, li .menu-expand', function(e) {
             var $this = $(this);
             if ($this.siblings('.sub-menu').length && ($this.attr('href') === '#' || $this.hasClass('menu-expand'))) {
                 e.preventDefault();
@@ -91,7 +91,7 @@
     /*--
         Login & Register Modal
     -----------------------------------*/
-    $('#loginSignupModal').on('show.bs.modal', function (event) {
+    $('#loginSignupModal').on('show.bs.modal', function(event) {
         var $button = $(event.relatedTarget),
             $target = $button.data('target-sub'),
             $modal = $(this);
@@ -270,7 +270,7 @@
     /*--
         Google Map
     -----------------------------------*/
-    $('.google-map').each(function () {
+    $('.google-map').each(function() {
         if ($(this).length) {
             var $this = $(this),
                 $id = $this.attr('id'),
@@ -288,7 +288,7 @@
                 var marker = new google.maps.Marker({
                     position: map.getCenter(),
                     map: map
-                    //animation: google.maps.Animation.BOUNCE
+                        //animation: google.maps.Animation.BOUNCE
                 });
             }
             google.maps.event.addDomListener(window, 'load', initialize);
@@ -298,13 +298,13 @@
     /*--
         Ajax Contact Form
     -----------------------------------*/
-    $(function () {
+    $(function() {
         // Get the form.
         var form = $('#contact-form');
         // Get the messages div.
         var formMessages = $('.form-messege');
         // Set up an event listener for the contact form.
-        $(form).submit(function (e) {
+        $(form).submit(function(e) {
             // Stop the browser from submitting the form.
             e.preventDefault();
             // Serialize the form data.
@@ -315,13 +315,13 @@
                     url: $(form).attr('action'),
                     data: formData
                 })
-                .done(function (response) {
+                .done(function(response) {
                     // Make sure that the formMessages div has the 'success' class.
                     formMessages.removeClass('error text-danger').addClass('success text-success mt-3').text(response);
                     // Clear the form.
                     form.find('input:not([type="submit"]), textarea').val('');
                 })
-                .fail(function (data) {
+                .fail(function(data) {
                     // Make sure that the formMessages div has the 'error' class.
                     formMessages.removeClass('success text-success').addClass('error text-danger mt-3');
                     // Set the message text.
