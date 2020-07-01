@@ -20,8 +20,7 @@ export class HeaderComponent implements OnInit {
       this.loginForm = this.formBuilder.group({
         Email:'',
         Password:''
-      })
-      
+      });
     }
   
   
@@ -29,10 +28,24 @@ export class HeaderComponent implements OnInit {
   }
   
   Register(user){
-    
     this.service.Register(user);
+
   };
   Login(user){
     this.service.Login(user);
+    
+    
+  }
+  Logout(){
+    this.service.Logout();
+  }
+
+  CloseModal(){
+    if(this.service.isLogined){
+      document.querySelector("#login").classList.remove("modal-open");
+      document.body.classList.remove("modal-open");
+      document.querySelector(".modal-backdrop").classList.remove("show");
+      document.querySelector("#loginSignupModal").setAttribute("style", "display:none");
+    }
   }
 }
