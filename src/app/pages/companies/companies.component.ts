@@ -5,29 +5,34 @@ import { Company } from 'src/app/_models/company';
 @Component({
   selector: 'app-companies',
   templateUrl: './companies.component.html',
-  styleUrls: ['./companies.component.scss']
+  styleUrls: ['./companies.component.scss'],
+ 
 })
 export class CompaniesComponent implements OnInit {
-  companies;
-  page:number=1;
-  pagesize:number=12;
+  items = Array<Company>();
+  pageSize:number=12;
+  pageOfItems: Array<any>;
+  
+  
   constructor(private service:CompanyService) { 
-    this.companies = new Array<Company>();
+    this.items = new Array<Company>();
   }
 
   ngOnInit(): void {
 
    this.service.getCompanies().subscribe(
      data => {
-       data.forEach(item => {
-         this.companies.push(item);
-         console.log(data);
-       });
+       this.items = data;
+      console.log(this.items)
+     },
+     error=>{
+       console.log(error);
      }
    );
-   console.log(this.companies);
-
-   
-  }
-  
+   this.items = Array(this.items.length).fill(0).map((x, i) => ({ id: (i + 1), name: x.name, title: x.title, photo: x.photo, about: x.about, foundDate: x.foundDate, location:x.location, teamSize:x.teamSize, category: x.category, jobs: x.jobs }));
+     console.log(this.items);
+  };
+  onChangePage(pageOfItems: Array<any>) {
+    this.pageOfItems = pageOfItems;
+}
 }
