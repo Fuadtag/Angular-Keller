@@ -25,7 +25,7 @@ const appRoutes = [
   { path: 'jobs', component: JobsComponent },
   { path: 'jobs/:{id}', component: JobDetailComponent },
   { path: 'companies', component: CompaniesComponent },
-  { path: 'companies/:{id}', component: CompanyDetailComponent },
+  { path: 'company-detail/:{id}', component: CompanyDetailComponent },
   { path: 'create-job', component: CreateJobComponent },
   { path: 'about-us', component: AboutUsComponent },
   { path: 'faq', component: FaqComponent },

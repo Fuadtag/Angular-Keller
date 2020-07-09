@@ -13,4 +13,7 @@ export class CompanyService {
   getCompanies(){
     return this.httpService.get<Company[]>("https://localhost:44346/api/company/list");
   }
+  getCompanyById(id:number){
+    return this.httpService.get<Company>("https://localhost:44346/api/company/detail/"+ id);
+  }
 }

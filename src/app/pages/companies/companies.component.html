@@ -24,7 +24,7 @@
 
                     <!-- Company List Start -->
                     <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 col-12" *ngFor="let item of items">
-                        <a href="company-single.html" class="company-list">
+                        <a class="company-list" [routerLink]="['/company-detail', item.id]">
                             <span class="company-logo"><img src="../../../assets/images/companies/company-1.png" alt="company-1"></span>
                             <h6 class="title">{{item.title}}</h6>
                             <span class="open-job">{{item.jobs.length}} open positions</span>
